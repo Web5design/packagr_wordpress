@@ -6,7 +6,7 @@ Description: A plugin that allows Packa.gr remote access to full back catalog of
 Version:1.0
 Author: XOXCO, Inc
 Author URI: http://xoxco.com
-License: MIT
+License: GPL
 */
 ?>
 <?php

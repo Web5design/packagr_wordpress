@@ -1,37 +1,31 @@
 === Plugin Name ===
-Contributors: markjaquith, mdawaffe (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam
+Contributors: xoxco, benbrown666
+Donate link: http://xoxco.com/
+Tags: packagr,publishing, ebooks, apps, html5, newsletters
 Requires at least: 3.0.1
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPL
+License URI: http://www.gnu.org/licenses/gpl.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+A plugin that allows Packa.gr remote access to full back catalog of content
 
 == Description ==
 
+This plugin gives structured data access to the entire back catalog of content hosted by Wordpress to the ingestion engine of Packa.gr,
+a multi-platform publishing tool.
 
 == Installation ==
 
+1. Copy the plugin folder into your wp-content/plugins folder
+2. Activate the plugin from within your Wordpress admin menu
+3. Go to the Tools -> Packagr API menu and follow the instructions to add Wordpress as a source to Packagr.
+
 == Frequently Asked Questions ==
 
-= A question that someone might have =
-
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
-(or jpg, jpeg, gif).
-2. This is the second screen shot
 
 == Changelog ==
 

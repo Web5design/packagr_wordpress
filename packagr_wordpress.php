@@ -120,8 +120,22 @@ function packagr_template_redirect() {
 						wp_reset_postdata();
 					endwhile;
 						
+					
+					$final = array(
+						'posts' => $results,
+						'count' => $count,
+						'result_length' => count($results),
+						'offset' => $offset,
+					);
+					
+					// did we get at least as many as we requested?
+					if (count($results) >= $count) {
+						$final['next_offset'] = $offset + count($results);
+						$final['next_link'] = site_url() . '/packagr?secret=' . $secret . '&count='.$count. '&offset=' . $final['next_offset'];
+					}
+					
 					header("Content-type: application/json");
-					echo json_encode($results);
+					echo json_encode($final);					
 	
 				} // if we have appropriate access
 				exit;

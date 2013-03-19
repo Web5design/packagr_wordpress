@@ -62,6 +62,7 @@ function packagr_template_redirect() {
 					$query = array(
 						'posts_per_page'=>$count,
 						'offset'=>$offset,
+						'publish_status'=>'publish'
 					);				
 					
 					if ($_REQUEST['q']) {
@@ -105,7 +106,7 @@ function packagr_template_redirect() {
 						
 						
 						$data = array(				
-							'title'		=> get_the_title(),
+							'title'		=> htmlspecialchars_decode(html_entity_decode(html_entity_decode_numeric(get_the_title()),ENT_QUOTES)),
 							'pubDate'	=> get_the_date('c'),
 							'link'=>	get_permalink(),
 							'content'	=> $content,
@@ -204,6 +205,51 @@ function packagr_admin_menu() {
 	
 	
 }
+
+/*
+	from: 	
+	http://stackoverflow.com/questions/2764781/how-to-decode-numeric-html-entities-in-php
+*/
+/**
+* Decodes all HTML entities, including numeric and hexadecimal ones.
+* 
+* @param mixed $string
+* @return string decoded HTML
+*/
+
+function html_entity_decode_numeric($string, $quote_style = ENT_COMPAT, $charset = "utf-8")
+{
+$string = html_entity_decode($string, $quote_style, $charset);
+$string = preg_replace_callback('~&#x([0-9a-fA-F]+);~i', "chr_utf8_callback", $string);
+$string = preg_replace('~&#([0-9]+);~e', 'chr_utf8("\\1")', $string);
+return $string; 
+}
+
+/** 
+ * Callback helper 
+ */
+
+function chr_utf8_callback($matches)
+ { 
+  return chr_utf8(hexdec($matches[1])); 
+ }
+
+/**
+* Multi-byte chr(): Will turn a numeric argument into a UTF-8 string.
+* 
+* @param mixed $num
+* @return string
+*/
+
+function chr_utf8($num)
+{
+if ($num < 128) return chr($num);
+if ($num < 2048) return chr(($num >> 6) + 192) . chr(($num & 63) + 128);
+if ($num < 65536) return chr(($num >> 12) + 224) . chr((($num >> 6) & 63) + 128) . chr(($num & 63) + 128);
+if ($num < 2097152) return chr(($num >> 18) + 240) . chr((($num >> 12) & 63) + 128) . chr((($num >> 6) & 63) + 128) . chr(($num & 63) + 128);
+return '';
+}
+
 
 
 ?>

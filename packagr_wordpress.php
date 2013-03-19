@@ -106,7 +106,7 @@ function packagr_template_redirect() {
 						
 						$data = array(				
 							'title'		=> get_the_title(),
-							'pubDate'	=> the_date('c','','',false),
+							'pubDate'	=> get_the_date('c'),
 							'link'=>	get_permalink(),
 							'content'	=> $content,
 							'author'		=> get_the_author(),
@@ -131,7 +131,7 @@ function packagr_template_redirect() {
 					// did we get at least as many as we requested?
 					if (count($results) >= $count) {
 						$final['next_offset'] = $offset + count($results);
-						$final['next_link'] = site_url() . '/packagr?secret=' . $secret . '&count='.$count. '&offset=' . $final['next_offset'];
+						$final['next_link'] = site_url() . '/packagr/?secret=' . $secret . '&count='.$count. '&offset=' . $final['next_offset'];
 					}
 					
 					header("Content-type: application/json");
@@ -192,7 +192,7 @@ function packagr_admin_menu() {
 	echo '<li>Go to <a href="http://preview.packa.gr/#/app/settings/sources" target="_blank">Packagr Content Sources menu</a></li>';
 	echo '<li>Click the Wordpress icon at the top of the page.</li>';
 	echo '<li>Copy the URL below and paste it into the Wordpress API field:<Br />';
-	echo '<input value="' . site_url() . "/packagr?secret=" . $secret . '" size="100" />';
+	echo '<input value="' . site_url() . "/packagr/?secret=" . $secret . '" size="100" />';
 	echo '</li>';
 	echo '<li>Click save, and the content will immediately begin importing! New content will be added automatically.</li>';
 	echo '</ol>';

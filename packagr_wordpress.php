@@ -118,8 +118,8 @@ function packagr_template_redirect() {
 						
 						array_push($results,$data);
 					
-						wp_reset_postdata();
 					endwhile;
+					wp_reset_postdata();
 						
 					
 					$final = array(

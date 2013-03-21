@@ -68,7 +68,11 @@ function packagr_template_redirect() {
 					if ($_REQUEST['q']) {
 						$query['s'] = $_REQUEST['q'];						
 					}
-				
+					
+					// disable any other plugins that have tapped into the start or end of the loop
+					remove_all_actions('loop_end');
+					remove_all_actions('loop_start');
+
 					$posts = new WP_Query( $query );
 					$results = array();
 		
